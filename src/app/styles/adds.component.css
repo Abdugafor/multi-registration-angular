@@ -1,0 +1,7 @@
+.add-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: var(--Primary-Light-blue);
+    border: 1px solid var(--Primary-Marine-blue);
+}

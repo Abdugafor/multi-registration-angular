@@ -1,0 +1,90 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    max-width: 1440px;
+    margin: 0 auto;
+    background: white;
+    width: 850px;
+    height: 550px;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+.nav {
+    background-image: url(../assets/images/bg-sidebar-desktop.svg);
+    padding: 50px  30px;
+    border-radius: 0.8rem;
+}
+
+a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 15px;
+    color: #fff;
+}
+
+.nav-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.nav-number {
+    font-weight: 500;
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 5px 10px;
+}
+
+.step-number {
+    color: var(--Neutral-Light-gray);
+    font-size: 13px;
+}
+
+
+
+a:hover .nav-number {
+    background: var(--Neutral-Light-gray); 
+    color: black;
+}
+
+a:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.step-info {
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.active {
+    font-weight: 500;
+    background: var(--Neutral-Light-gray); 
+    color: black;
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 5px 10px;
+}
+
+.main {
+    flex-grow: 1;
+}
+
+.next-btn-to-right {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    align-items: center;
+}
+
+.btn-go-back {
+    color: var(--Neutral-Cool-gray);
+    font-weight: 500;
+    background: inherit;;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}

@@ -1,1 +1,112 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+
+:root {
+
+    --Primary-Marine-blue: hsl(213, 96%, 18%);
+    --Primary-Purplish-blue: hsl(243, 100%, 62%);
+    --Primary-Pastel-blue: hsl(228, 100%, 84%);
+    --Primary-Light-blue: hsl(206, 94%, 87%);
+    --Primary-Strawberry-red: hsl(354, 84%, 57%);
+    
+    --Neutral-Cool-gray: hsl(231, 11%, 63%);
+    --Neutral-Light-gray: hsl(229, 24%, 87%);
+    --Neutral-Magnolia: hsl(217, 100%, 97%);
+    --Neutral-Alabaster: hsl(231, 100%, 99%);
+    --Neutral-White: hsl(0, 0%, 100%);
+}
+
+body {
+    background: var(--Neutral-Light-gray);
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 16px;
+}
+
+
+
+.main-header-h1 {
+    color: var(--Primary-Marine-blue);
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.main-header-p {
+    color: var(--Neutral-Cool-gray);
+    
+}
+
+.next-btn {
+    width: fit-content;
+    color: white;
+    font-weight: 500;
+    background: var(--Primary-Marine-blue);
+    text-decoration: none;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.margin-bottom {
+    margin-bottom: 40px;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    padding: 35px 70px 0 10px;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 30px;
+    height: 100%;
+}
+
+.plan-price {
+    color: var(--Neutral-Cool-gray);
+}
+
+.route-back-btn {
+    text-decoration: none;
+    color: var(--Neutral-Cool-gray);
+    font-weight: 500;
+}
+
+.confirm-btn {
+    width: fit-content;
+    color: white;
+    font-weight: 500;
+    margin-top: 50px;
+    background: var(--Primary-Purplish-blue);
+    text-decoration: none;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
