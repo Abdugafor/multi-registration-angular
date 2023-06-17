@@ -1,7 +1,107 @@
+
 .add-item {
+    position: relative;
     width: 100%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    background: var(--Primary-Light-blue);
+    border: 1px solid var(--Primary-Light-blue);
+    padding: 23px 15px;
+    border-radius: 7px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.add-item:hover {
     border: 1px solid var(--Primary-Marine-blue);
 }
+
+.add-item:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.add-top {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.add-info span {
+    display: block;
+}
+
+.add-info span:not(:last-child) {
+    margin-bottom: 5px;
+}
+
+.adds  input {
+    width: fit-content;
+}
+
+
+.add-price {
+    color: var(--Primary-Purplish-blue);
+}
+
+/* Checkbox styles */
+
+/* Hide the default checkbox */
+.add-item input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+   }
+   
+   
+   /* Create a custom checkbox */
+   .checkmark {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 1.3em;
+    width: 1.3em;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid var(--Primary-Light-blue);
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.30), 0px 1px 1px rgba(0,5);
+   }
+   
+   /* When the checkbox is checked, add a blue background */
+   .add-item input:checked ~ .checkmark {
+    background: var(--Primary-Purplish-blue);
+   }
+   
+   
+   /* Create the checkmark/indicator (hidden when not checked) */
+   .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+   }
+   
+   /* Show the checkmark when checked */
+   .add-item input:checked ~ .checkmark:after {
+    display: block;
+   }
+
+   
+   /* Style the checkmark/indicator */
+   .add-item .checkmark:after {
+    left: 0.45em;
+    top: 0.25em;
+    width: 0.25em;
+    height: 0.5em;
+    border: solid white;
+    border-width: 0 0.15em 0.15em 0;
+    transform: rotate(45deg);
+   }
+
+   .add-item:has(input:checked) {
+    border: 1px solid var(--Primary-Marine-blue);
+   }
+
+   .description-add {
+    color: var(--Neutral-Light-gray);
+   }

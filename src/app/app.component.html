@@ -1,7 +1,7 @@
 <div class="container">
     <div class="nav">
-        <a >
-            <span class="nav-number" [classList]="step === 1 ? 'active' : 'nav-number'">1</span>
+        <a (click)="onNavClick(a1.textContent)" >
+            <span class="nav-number" [classList]="step === 1 ? 'active' : 'nav-number'" #a1>1</span>
 
             <div class="nav-info">
                 <span class="step-number">
@@ -13,8 +13,8 @@
             </div>
         </a>
 
-        <a>
-            <span class="nav-number" [classList]="step === 2 ? 'active' : 'nav-number'">2</span>
+        <a (click)="onNavClick(a2.textContent)">
+            <span class="nav-number" [classList]="step === 2 ? 'active' : 'nav-number'" #a2>2</span>
 
             <div class="nav-info">
                 <span class="step-number">
@@ -26,8 +26,8 @@
             </div>
         </a>
 
-        <a >
-            <span class="nav-number" [classList]="step === 3 ? 'active' : 'nav-number'">3</span>
+        <a (click)="onNavClick(a3.textContent)">
+            <span class="nav-number" [classList]="step === 3 ? 'active' : 'nav-number'" #a3>3</span>
 
             <div class="nav-info">
                 <span class="step-number">
@@ -40,7 +40,7 @@
         </a>
 
         <a>
-            <span class="nav-number" [classList]="step === 4 ? 'active' : 'nav-number'">4</span>
+            <span class="nav-number" [classList]="step === 4 || step === 5 ? 'active' : 'nav-number'">4</span>
 
             <div class="nav-info">
                 <span class="step-number">
@@ -68,7 +68,7 @@
                     <div class="label">
                         <label for="name">Name</label>
                 
-                        <div >
+                        <div *ngIf="userInfoForm.controls['name'].invalid && userInfoForm.controls['name'].touched" class="error">
                             This field is required
                          </div>
                     </div>
@@ -80,11 +80,16 @@
                         name="username"
                         formControlName="name"
                         id="name"
+                        [className]="userInfoForm.controls['name'].touched && userInfoForm.controls['name'].invalid ? 'inputError' : ''"
                      >
                 
                 
                      <div class="label">
                         <label for="name">Email Address</label>
+
+                        <div *ngIf="userInfoForm.controls['email'].invalid && userInfoForm.controls['email'].touched" class="error">
+                            This field is required
+                         </div>
                     </div>
                     <input 
                         type="email" 
@@ -94,10 +99,15 @@
                         pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
                         formControlName="email"
                         id="email"
+                        [className]="userInfoForm.controls['email'].touched && userInfoForm.controls['email'].invalid ? 'inputError' : ''"
                     >
                 
                     <div class="label">
                         <label for="name">Number</label>
+
+                        <div *ngIf="userInfoForm.controls['number'].invalid && userInfoForm.controls['number'].touched" class="error">
+                            This field is required
+                         </div>
                     </div>
                     <input 
                         type="number" 
@@ -106,6 +116,7 @@
                         name="phonenumber"
                         formControlName="number"
                         id="number"
+                        [className]="userInfoForm.controls['number'].touched && userInfoForm.controls['number'].invalid ? 'inputError' : ''"
                     >
                 </div>
             </div>
@@ -179,16 +190,77 @@
                 </header>
                 
                 <div class="adds">
-                    <div class="add-item">
-                        <input type="checkbox" id="online-service">
+                    <label for="online-service" class="add-item">
+                        <div class="add-top">
+                            <div>
+                                <input type="checkbox" id="online-service" formControlName="onlineService">
+                                <div class="checkmark"></div>
+                            </div>
 
-                        <div class="add-info">
-                            <label for="online-service" class="add-info-label">Online Service</label>
-                            <p class="add-info-p">Access to multiplayer games</p>
+                            <div class="add-info">
+                                <span>Online Service</span>
+                                <span class="main-header-p description-add">Access to multiplayer games</span>
+                            </div>
                         </div>
 
-                        <span class="add-price">+1$/mo</span>
+                        <span class="add-price" *ngIf="planMode === 'monthly'">+$1/mo</span>
+                        <span class="add-price" *ngIf="planMode === 'yearly'">+$10/yr</span>
+
+                    </label>
+
+                    <label for="storage" class="add-item">
+                        <div class="add-top">
+                            <div>
+                                <input type="checkbox" id="storage" formControlName="largerStorage">
+                                <div class="checkmark"></div>
+                            </div>
+
+                            <div class="add-info">
+                                <span>Larger storage</span>
+                                <span class="main-header-p description-add">Extra 1 TB of cloud save</span>
+                            </div>
+                        </div>
+
+                        <span class="add-price" *ngIf="planMode === 'monthly'">+$2/mo</span>
+                        <span class="add-price" *ngIf="planMode === 'yearly'">+$20/yr</span>
+
+                    </label>
+
+                    <label for="custom-profile" class="add-item">
+                        <div class="add-top">
+                            <div>
+                                <input type="checkbox" id="custom-profile" formControlName="customProfile">
+                                <div class="checkmark"></div>
+                            </div>
+
+                            <div class="add-info">
+                                <span>Customizable Profile</span>
+                                <span class="main-header-p description-add">Custom theme on your profile</span>
+                            </div>
+                        </div>
+
+                        <span class="add-price" *ngIf="planMode === 'monthly'">+$2/mo</span>
+                        <span class="add-price" *ngIf="planMode === 'yearly'">+$20/yr</span>
+
+                    </label>
+
+                    <div class="next-btn-to-right">
+                        <button 
+                            type="button"
+                            class="btn-go-back" 
+                            (click)="onGoBack()"
+                            *ngIf="step > 1"
+                        >Go back</button>
+            
+                        <button 
+                            type="submit"
+                            class="next-btn" 
+                            (click)="onSubmit()" 
+                            *ngIf="step !<= 4"                     
+                        >Next STep
+                    </button>
                     </div>
+                    
                 </div>
             </div>
 
@@ -201,17 +273,66 @@
                     <h1 class="main-header-h1">Finishing up</h1>
                     <p class="main-header-p">Double-check everything look OK before confirming.</p>
                 </header>
+
+                <div class="main-content">
+                    <div class="finish-info">
+                        <div class="d-flex">
+                            <div>
+                               <h4>{{userInfo.plan}}({{planMode}})</h4>
+                               <span class="change-btn" (click)="onBackToPlan()">Change</span>
+                            </div>
+
+                            <span class="summary-price">${{userInfo.isPaymentYearly ? planPrice.yearly : planPrice.monthly}}/{{userInfo.isPaymentYearly ?'yr': 'mo'}}</span>
+                        </div>
+                        <hr>
+                        <div class="adds-summary">
+                            <div class="d-flex" *ngIf="userInfo.onlineService">
+                                <p class="main-header-p" >Online service</p>
+                                <p class="main-header-p" *ngIf="!userInfo.isPaymentYearly">+$1/mo</p>
+                                <p class="main-header-p" *ngIf="userInfo.isPaymentYearly">+$10/yr</p>
+                            </div>
+
+                            <div class="d-flex" *ngIf="userInfo.largerStorage">
+                                <p class="main-header-p" >Larger storage</p>
+                                <p class="main-header-p" *ngIf="!userInfo.isPaymentYearly">+$2/mo</p>
+                                <p class="main-header-p" *ngIf="userInfo.isPaymentYearly">+$20/yr</p>
+
+                            </div>
+
+                            <div class="d-flex" *ngIf="userInfo.customProfile">
+                                <p class="main-header-p" >Customizable profile</p>
+                                <p class="main-header-p" *ngIf="!userInfo.isPaymentYearly">+$2/mo</p>
+                                <p class="main-header-p" *ngIf="userInfo.isPaymentYearly">+$20/yr</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex total">
+                        <span class="main-header-p">Total (per {{userInfo.isPaymentYearly ? 'year' : 'month'}})</span>
+                        <span class="total-price">${{totalPrice}}/{{userInfo.isPaymentYearly ?'yr': 'mo'}}</span>
+                    </div>
+                </div>
                 
             </div>
 
              <!-- Step 4 - Component End -->
+
+             <!-- Step 5 - Component Start -->
+
+            <div class="end-content" *ngIf="step === 5">
+                <img src="../assets/images/icon-thank-you.svg" alt="">
+                <h1 class="thnks">Thank You!</h1>
+                <p class="thnks-p">Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com</p>
+            </div>
+
+             <!-- Step 5 - Component End -->
         </form>
 
-        <div class="next-btn-to-right">
+        <div class="next-btn-to-right" *ngIf="step !== 3">
             <button 
                 class="btn-go-back" 
                 (click)="onGoBack()"
-                *ngIf="step > 1"
+                *ngIf="step > 1 && step <= 4"
             >Go back</button>
 
             <button 
@@ -219,6 +340,7 @@
                 (click)="onStepClick()" 
                 *ngIf="step !<= 4"
                 [classList]="step !== 4 ? 'next-btn' : 'confirm-btn'"
+                [disabled]="userInfoForm.controls['name'].invalid || userInfoForm.controls['email'].invalid || userInfoForm.controls['number'].invalid "
             >{{step !== 4 ? 'Next Step' : 'Confirm'}}
         </button>
         </div>

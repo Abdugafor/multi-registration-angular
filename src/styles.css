@@ -55,7 +55,7 @@ body {
 
 .main-header-p {
     color: var(--Neutral-Cool-gray);
-    
+    font-weight: 500;
 }
 
 .next-btn {
@@ -109,4 +109,73 @@ body {
     border-radius: 10px;
     border: none;
     cursor: pointer;
+}
+
+.finish-info {
+    padding: 23px;
+    background: var(--Neutral-Magnolia);
+    border-radius: 12px;
+}
+
+hr {
+    margin: 10px 5px;
+    border: 1px solid rgb(224, 224, 224);
+}
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.d-flex h4 {
+    color: var(--Primary-Marine-blue);
+    font-weight: 500;
+    margin-bottom: 7px;
+}
+
+.change-btn {
+    text-decoration: underline;
+    cursor: pointer;
+    color: var(--Neutral-Cool-gray);
+}
+
+.d-flex p {
+    margin: 10px 0;
+}
+
+.summary-price {
+    font-weight: 500;
+    color: var(--Primary-Marine-blue);
+}
+
+.total {
+    padding: 0 20px;
+}
+
+.total-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--Primary-Purplish-blue);
+}
+
+.thnks {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--Primary-Marine-blue);
+    margin: 15px 0;
+}
+
+.end-content {
+    margin-top: 100px;
+    max-width: 500px;
+    text-align: center;
+}
+
+.thnks-p {
+    color: var(--Neutral-Cool-gray);
+}
+
+a:hover {
+    cursor: pointer;
+    user-select: none;
 }
