@@ -72,6 +72,8 @@ export class AppComponent implements OnInit{
         largerStorage: new FormControl(false),
         customProfile: new FormControl(false),
       })
+
+      console.log('Rendered')
     }
 
     onStepClick() {
