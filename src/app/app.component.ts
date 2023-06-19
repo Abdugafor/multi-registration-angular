@@ -73,7 +73,7 @@ export class AppComponent implements OnInit{
         customProfile: new FormControl(false),
       })
 
-      console.log('Rendered')
+      console.log('Rendered2')
     }
 
     onStepClick() {

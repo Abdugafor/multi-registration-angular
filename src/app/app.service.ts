@@ -14,5 +14,6 @@ export class AppService {
   postData(user: any) {
     const body = JSON.stringify(user)
     this.http.post('https://angular-practice-ff96d-default-rtdb.firebaseio.com/data.json', body)
+    .subscribe(data => console.log('finish'))
   }
 }
