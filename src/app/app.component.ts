@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -56,7 +57,7 @@ export class AppComponent implements OnInit{
     }
 
 
-    constructor() {
+    constructor(private httpService: AppService) {
 
     }
 
@@ -132,6 +133,8 @@ export class AppComponent implements OnInit{
           this.totalPrice += 2
         }
       }
+
+      this.httpService.postData(this.userInfoForm.value)
     }
 
     onBackToPlan() {

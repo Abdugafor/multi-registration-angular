@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -7,23 +8,11 @@ import { Injectable } from '@angular/core';
 
 
 export class AppService {
-  public userInfo = {
-    name: '',
-    email: '',
-    number: '',
-    plan: '',
-    add: []
-  }
 
-  constructor() { }
+  constructor (private http: HttpClient) {}
 
-  sendUserInfo(props: any) {
-    this.userInfo.name = props.name
-    this.userInfo.email = props.email
-    this.userInfo.number = props.number
-  }
-
-  getUserInfo() {
-    return this.userInfo
+  postData(user: any) {
+    const body = JSON.stringify(user)
+    this.http.post('https://angular-practice-ff96d-default-rtdb.firebaseio.com/data.json', body)
   }
 }
