@@ -14,9 +14,28 @@ import { AppService } from './app.service';
 })
 
 export class AppComponent implements OnInit{
-  
+
+  steps =  [
+    {number: 1, title: 'YOUR INFO'},
+    {number: 2, title: 'SELECT PLAN'},
+    {number: 3, title: 'ADD-ONS'},
+    {number: 4, title: 'SUMMARY'},
+  ]
+
+  // Create Reactive From
     userInfoForm: FormGroup
+
+    // Installing current step 
     step = 1
+
+    totalPrice = 0
+
+    planPayment = []
+
+    planPrice = {
+      yearly: 0,
+      monthly: 0
+    }
 
     userInfo = {
       name: '',
@@ -29,14 +48,9 @@ export class AppComponent implements OnInit{
       customProfile: false,
     }
 
-    totalPrice = 0
+    @Input()  planMode = 'monthly'
 
-    planPayment = []
-
-    planPrice = {
-      yearly: 0,
-      monthly: 0
-    }
+    
     // Step 2 - Plans propreties
 
     public plans = [
@@ -45,7 +59,9 @@ export class AppComponent implements OnInit{
       {name: 'Pro', priceMonth: '15', priceYear: '150', icon: '../assets/images/icon-pro.svg'},
     ]
   
-    @Input()  planMode = 'monthly'
+    constructor(private httpService: AppService) {
+
+    }
   
     onSwitchPlanMode() {
       if (this.planMode === 'monthly') {
@@ -56,10 +72,6 @@ export class AppComponent implements OnInit{
       }
     }
 
-
-    constructor(private httpService: AppService) {
-
-    }
 
     ngOnInit(): void {
       this.userInfoForm = new FormGroup({
@@ -73,21 +85,26 @@ export class AppComponent implements OnInit{
         customProfile: new FormControl(false),
       })
 
-      console.log('Rendered2')
     }
 
     onStepClick() {
       this.step = this.step + 1
     }
 
-    onNavClick(navNumber) {
-      this.step = Math.floor(navNumber)
-    }
-
     onGoBack() {
       this.step = this.step - 1
     }
-    
+  
+    onBackToPlan() {
+      this.step = this.step - 2
+    }
+
+    onNavClick(navNumber) {
+      if (navNumber !== '4') {
+        this.step = Math.floor(navNumber)
+      }
+    }
+
     onSubmit() {
       const user = this.userInfoForm.value
       this.step = this.step + 1
@@ -139,8 +156,5 @@ export class AppComponent implements OnInit{
       this.httpService.postData(this.userInfoForm.value)
     }
 
-    onBackToPlan() {
-      this.step = this.step - 2
-    }
 
 }

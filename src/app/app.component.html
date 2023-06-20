@@ -1,56 +1,18 @@
 <div class="container">
     <div class="nav">
-        <a (click)="onNavClick(a1.textContent)" >
-            <span class="nav-number" [classList]="step === 1 ? 'active' : 'nav-number'" #a1>1</span>
+        <a (click)="onNavClick(a1.textContent)" *ngFor="let item of steps">
+            <span class="nav-number" [classList]="step === item.number ? 'active' : 'nav-number'" #a1>{{item.number}}</span>
 
             <div class="nav-info">
                 <span class="step-number">
-                    STEP 1
+                    STEP {{item.number}}
                 </span>
                 <span class="step-info">
-                    YOUR INFO
+                    {{item.title}}
                 </span>
             </div>
         </a>
 
-        <a (click)="onNavClick(a2.textContent)">
-            <span class="nav-number" [classList]="step === 2 ? 'active' : 'nav-number'" #a2>2</span>
-
-            <div class="nav-info">
-                <span class="step-number">
-                    STEP 2
-                </span>
-                <span class="step-info">
-                   SELECT PLAN
-                </span>
-            </div>
-        </a>
-
-        <a (click)="onNavClick(a3.textContent)">
-            <span class="nav-number" [classList]="step === 3 ? 'active' : 'nav-number'" #a3>3</span>
-
-            <div class="nav-info">
-                <span class="step-number">
-                    STEP 3
-                </span>
-                <span class="step-info">
-                    ADD-ONS
-                </span>
-            </div>
-        </a>
-
-        <a>
-            <span class="nav-number" [classList]="step === 4 || step === 5 ? 'active' : 'nav-number'">4</span>
-
-            <div class="nav-info">
-                <span class="step-number">
-                    STEP 4
-                </span>
-                <span class="step-info">
-                        SUMMARY
-                </span>
-            </div>
-        </a>
     </div>
 
     <div class="main">
@@ -256,7 +218,8 @@
                             type="submit"
                             class="next-btn" 
                             (click)="onSubmit()" 
-                            *ngIf="step !<= 4"                     
+                            *ngIf="step !<= 4" 
+                            [disabled]="userInfoForm.invalid"                    
                         >Next STep
                     </button>
                     </div>
