@@ -15,13 +15,7 @@ import { AppService } from './app.service';
 
 export class AppComponent implements OnInit{
 
-  steps =  [
-    {number: 1, title: 'YOUR INFO'},
-    {number: 2, title: 'SELECT PLAN'},
-    {number: 3, title: 'ADD-ONS'},
-    {number: 4, title: 'SUMMARY'},
-  ]
-
+ 
   // Create Reactive From
     userInfoForm: FormGroup
 
@@ -36,6 +30,13 @@ export class AppComponent implements OnInit{
       yearly: 0,
       monthly: 0
     }
+
+    steps =  [
+      {number: 1, title: 'YOUR INFO'},
+      {number: 2, title: 'SELECT PLAN'},
+      {number: 3, title: 'ADD-ONS'},
+      {number: 4, title: 'SUMMARY'},
+    ]
 
     userInfo = {
       name: '',
@@ -100,9 +101,7 @@ export class AppComponent implements OnInit{
     }
 
     onNavClick(navNumber) {
-      if (navNumber !== '4') {
-        this.step = Math.floor(navNumber)
-      }
+      this.step = Math.floor(navNumber)
     }
 
     onSubmit() {

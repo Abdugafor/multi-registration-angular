@@ -12,7 +12,6 @@
                 </span>
             </div>
         </a>
-
     </div>
 
     <div class="main">
@@ -302,13 +301,13 @@
                 class="next-btn" 
                 (click)="onStepClick()" 
                 *ngIf="step !<= 4"
+                [ngClass]="userInfoForm.invalid ? 'disabledBtn' : '' "
                 [classList]="step !== 4 ? 'next-btn' : 'confirm-btn'"
-                [disabled]="userInfoForm.controls['name'].invalid || userInfoForm.controls['email'].invalid || userInfoForm.controls['number'].invalid "
+                [disabled]="userInfoForm.invalid"
             >{{step !== 4 ? 'Next Step' : 'Confirm'}}
         </button>
         </div>
        
-
     </div>
 
 </div>

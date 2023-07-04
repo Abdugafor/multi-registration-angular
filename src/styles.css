@@ -102,7 +102,6 @@ body {
     width: fit-content;
     color: white;
     font-weight: 500;
-    margin-top: 50px;
     background: var(--Primary-Purplish-blue);
     text-decoration: none;
     padding: 15px 20px;
@@ -178,4 +177,9 @@ hr {
 a:hover {
     cursor: pointer;
     user-select: none;
+}
+
+.disabledBtn {
+    background: rgb(112, 112, 112) !important;
+    cursor: not-allowed;
 }
